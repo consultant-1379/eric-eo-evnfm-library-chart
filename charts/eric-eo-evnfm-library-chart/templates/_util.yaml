@@ -1,0 +1,29 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+{{- /*
+eric-eo-evnfm-library-chart.util.merge will merge two YAML templates and output the result.
+This takes an array of three values:
+- the top context
+- the template name of the overrides (destination)
+- the template name of the base (source)
+*/}}
+{{- define "eric-eo-evnfm-library-chart.util.merge" -}}
+{{- $top := first . -}}
+{{- $overrides := fromYaml (include (index . 1) $top) | default (dict ) -}}
+{{- $tpl := fromYaml (include (index . 2) $top) | default (dict ) -}}
+{{- toYaml (merge $overrides $tpl) -}}
+{{- end -}}

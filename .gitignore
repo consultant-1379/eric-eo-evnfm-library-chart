@@ -1,0 +1,23 @@
+# IntelliJ IDEA files
+.idea
+*.iws
+*.ipr
+*.iml
+*.patch
+
+# Maven build files
+target
+reports
+
+#tmp directories
+tmp/
+test-output/**
+
+# ignore report files
+design-rule-check-report*
+
+#BOB Files
+.project_*
+helm-target/**
+.bob/**
+artifact.properties
